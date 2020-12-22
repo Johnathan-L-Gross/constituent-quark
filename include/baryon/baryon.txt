@@ -1,0 +1,34 @@
+J AND S VALUES ARE TWICE THEIR PHYSICAL VALUES
+J=1/2 is stored as J=1
+J=3/2 is stored as J=3
+This was done to store them as integers.
+
+Positive parity is stored as 0 for (-1)^0 and negative as 1 for (-1)^1
+
+states are labeled in this order:
+Pf,J,Pj,M,N,L,np,lp,nl,ll,S,Ps
+0  1 2  3 4 5 6  7  8  9 10 11
+
+polytype: Hermite (true) or Laguerre (false) quadrature
+	if(polytype) XX=r, else XX=r^2
+     	if(polytype) dx=XW*r^2, else dx=XW*r/2=XW*sqrt(x)/2
+
+k is list of variable type: 
+ 	2s place: 0 for 1D lambda, 1 for 1D rho
+ 	1s place: 0 for position, 1 for momentum,
+		used in scalar, spin-spin, and Dirac delta
+ 	ignored otherwise, still need to include
+tens is list of term type:
+ 	0 for scalar
+ 	1 for spin-spin
+ 	2 for spin tensor
+ 	3 for spin vector 2 body (do not include 1/rho in f)
+ 	4 for spin vector 3 body
+	5 for Dirac delta
+spin is list of spin configurations (formerly tens2), one of:
+ 	tens=0,2,3,4,5: ignored, still need to include a value to comply
+ 	tens=1: 11,22,33 for S_i^2
+ 		12,21,13,31,23,32 for S_i.S_j
+ 			only 12 and 21 allowed for 1D
+rot is list of Moshinsky rotation index
+pars is list of paramaters for use in the vector, ignored otherwise
